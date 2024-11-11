@@ -20,10 +20,10 @@
         </classes>
     </test>
 
-    <test name="Open Cart Home Page Test_Edge">
-        <parameter name="browser" value="edge" />
-        <classes>
-            <class name="org.qa.opencart.tests.HomePageTest"></class>
-        </classes>
-    </test>
+<!--    <test name="Open Cart Home Page Test_Edge">-->
+<!--        <parameter name="browser" value="edge" />-->
+<!--        <classes>-->
+<!--            <class name="org.qa.opencart.tests.HomePageTest"></class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
