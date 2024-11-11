@@ -9,6 +9,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import javax.print.attribute.standard.Media;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -78,6 +79,7 @@ public class ExtentReportListener implements ITestListener {
     public void onTestSuccess(ITestResult result){
         System.out.println(result.getMethod().getMethodName()+" - passed!");
         test.get().pass("Test Passed");
+        test.get().pass(MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenShot(), result.getMethod().getMethodName()).build());
         test.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
@@ -85,7 +87,6 @@ public class ExtentReportListener implements ITestListener {
     public void onTestFailure(ITestResult result){
         System.out.println(result.getMethod().getMethodName()+" - Failed!");
         test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenShot(), result.getMethod().getMethodName()).build());
-
     }
     @Override
     public void onTestSkipped(ITestResult result){
