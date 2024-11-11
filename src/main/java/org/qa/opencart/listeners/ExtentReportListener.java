@@ -84,13 +84,13 @@ public class ExtentReportListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result){
         System.out.println(result.getMethod().getMethodName()+" - Failed!");
-        test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(getScreenShot()).build());
+        test.get().fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenShot(), result.getMethod().getMethodName()).build());
 
     }
     @Override
     public void onTestSkipped(ITestResult result){
         System.out.println(result.getMethod().getMethodName()+" - Skipped!!");
-        test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(getScreenShot()).build());
+        test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromBase64String(getScreenShot(), result.getMethod().getMethodName()).build());
     }
 
     private Date getTime(long millis){
